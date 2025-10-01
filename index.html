@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aj Obalobao - Portfolio</title>
+    <meta name="description" content="Portfolio of Aj Obalobao, BSIT student and full‑stack developer using Laravel, PHP, Tailwind CSS, and Django.">
+    <meta name="theme-color" content="#0b1220">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta property="og:title" content="Aj Obalobao — Portfolio">
+    <meta property="og:description" content="Projects and services by Aj Obalobao: Laravel, PHP, Tailwind CSS, Django.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&crop=center">
+    <meta property="og:url" content="https://your-domain.example/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sansBrand: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        serifBrand: ['"Playfair Display"', 'ui-serif', 'Georgia', 'serif']
+                    },
+                    colors: {
+                        'blue-primary': '#1e40af',
+                        'blue-secondary': '#3b82f6',
+                        'blue-light': '#60a5fa',
+                        'blue-dark': '#1e3a8a'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a174e 0%, #1e40af 40%, #3b82f6 80%, #87ceeb 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white overflow-x-hidden font-sansBrand">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-black via-gray-900 to-black backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="flex items-center gap-3 animate-fade-in">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-light to-blue-secondary flex items-center justify-center text-gray-900 font-extrabold shadow-sm">
+                        AO
+                    </div>
+                    <span class="font-semibold tracking-wide text-white/80 hover:text-blue-light transition-colors hidden sm:inline">Aj Obalobao</span>
+                </a>
+                <div class="hidden md:flex items-center gap-3">
+                    <div class="bg-white/5 border border-white/10 backdrop-blur rounded-full px-5 py-2 flex items-center gap-6">
+                        <a href="#home" class="nav-link group relative text-white/80 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-blue-light after:transition-transform after:duration-300 group-hover:after:scale-x-100">Home</a>
+                        <a href="#about" class="nav-link group relative text-white/80 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-blue-light after:transition-transform after:duration-300 group-hover:after:scale-x-100">About</a>
+                        <a href="#skills" class="nav-link group relative text-white/80 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-blue-light after:transition-transform after:duration-300 group-hover:after:scale-x-100">Skills</a>
+                        <a href="#projects" class="nav-link group relative text-white/80 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-blue-light after:transition-transform after:duration-300 group-hover:after:scale-x-100">Projects</a>
+                        <a href="#contact" class="nav-link group relative text-white/80 hover:text-white transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-blue-light after:transition-transform after:duration-300 group-hover:after:scale-x-100">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-blue-light">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden pt-4 space-y-4 bg-white/5 border border-white/10 rounded-xl p-4">
+                <a href="#home" class="block hover:text-blue-light transition-colors duration-300">Home</a>
+                <a href="#about" class="block hover:text-blue-light transition-colors duration-300">About</a>
+                <a href="#skills" class="block hover:text-blue-light transition-colors duration-300">Skills</a>
+                <a href="#projects" class="block hover:text-blue-light transition-colors duration-300">Projects</a>
+                <a href="#contact" class="block hover:text-blue-light transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <!-- Swirling Fish Canvas -->
+        <canvas id="fishCanvas" class="absolute inset-0 pointer-events-none"></canvas>
+        <!-- Floating Blobs -->
+        <div class="pointer-events-none absolute -top-20 -left-10 w-72 h-72 bg-blue-500/30 blur-3xl rounded-full animate-float"></div>
+        <div class="pointer-events-none absolute top-1/3 -right-10 w-80 h-80 bg-blue-300/20 blur-3xl rounded-full animate-float" style="animation-delay: .8s"></div>
+        <div class="pointer-events-none absolute bottom-0 left-1/4 w-64 h-64 bg-cyan-400/20 blur-3xl rounded-full animate-float" style="animation-delay: 1.3s"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-slide-up">
+                <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur px-3 py-1 rounded-full text-sm text-blue-100 mb-4">
+                    <span class="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    Available for projects
+                </span>
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 text-shadow font-serifBrand">
+                    Aj <span class="text-blue-light">Obalobao</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-4 text-blue-100 animate-slide-up" style="animation-delay: 0.2s;">
+                    3rd Year BSIT Student
+                </p>
+                <p class="text-lg md:text-xl mb-10 text-blue-200">
+                    <span id="typed" class="border-r-2 border-blue-light pr-1"></span>
+                </p>
+                <div class="animate-slide-up flex flex-col items-center gap-6" style="animation-delay: 0.6s;">
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#projects" class="bg-blue-primary hover:bg-blue-dark text-white px-7 py-3 rounded-full text-base font-semibold transition-all duration-300 hover-scale inline-flex items-center gap-2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8M3 7h6a2 2 0 012 2v10"/></svg>
+                            View Projects
+                        </a>
+                        <a href="#contact" class="bg-white/10 hover:bg-white/20 text-blue-100 px-7 py-3 rounded-full text-base font-semibold transition-all duration-300 hover-scale inline-flex items-center gap-2 border border-white/20">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            Contact Me
+                        </a>
+                        <a href="#" class="bg-white/10 hover:bg-white/20 text-blue-100 px-7 py-3 rounded-full text-base font-semibold transition-all duration-300 hover-scale inline-flex items-center gap-2 border border-white/20">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11V3m0 8l-3-3m3 3l3-3M6 21h12a2 2 0 002-2v-4H4v4a2 2 0 002 2z"/></svg>
+                            Download CV
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4 text-left">
+                        <div class="glass-effect rounded-xl px-5 py-3">
+                            <p class="text-3xl font-bold text-blue-light">10+<span class="text-white text-base align-top ml-1">Projects</span></p>
+                        </div>
+                        <div class="glass-effect rounded-xl px-5 py-3">
+                            <p class="text-3xl font-bold text-blue-light">4<span class="text-white text-base align-top ml-1">Stacks</span></p>
+                        </div>
+                        <div class="glass-effect rounded-xl px-5 py-3">
+                            <p class="text-3xl font-bold text-blue-light">2+<span class="text-white text-base align-top ml-1">Years</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <svg class="w-6 h-6 text-blue-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Minimal Light Showcase -->
+    <section id="showcase" class="py-24 bg-gray-100 text-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="mb-14">
+                <p class="uppercase tracking-widest text-xs text-gray-500 mb-3">Work</p>
+                <h2 class="font-serifBrand text-5xl md:text-7xl font-extrabold leading-tight">Showcasing My Most<br class="hidden md:block"/> Recent Projects</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="aspect-video rounded-lg mb-5 overflow-hidden">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=384&fit=crop&crop=center" 
+                             srcset="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=384&fit=crop&crop=center 640w,
+                                     https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1024&h=614&fit=crop&crop=center 1024w,
+                                     https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=960&fit=crop&crop=center 1600w" 
+                             alt="E-commerce platform" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">E‑Commerce Platform</h3>
+                    <p class="text-gray-600 text-sm">A Laravel + Tailwind build focused on speed and usability.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="aspect-video rounded-lg mb-5 overflow-hidden">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=640&h=384&fit=crop&crop=center" 
+                             srcset="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=640&h=384&fit=crop&crop=center 640w,
+                                     https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1024&h=614&fit=crop&crop=center 1024w,
+                                     https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=960&fit=crop&crop=center 1600w" 
+                             alt="Task management app" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">Task Management App</h3>
+                    <p class="text-gray-600 text-sm">Team collaboration tool powered by Django.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="aspect-video rounded-lg mb-5 overflow-hidden">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=384&fit=crop&crop=center" 
+                             srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=384&fit=crop&crop=center 640w,
+                                     https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=614&fit=crop&crop=center 1024w,
+                                     https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=960&fit=crop&crop=center 1600w" 
+                             alt="Portfolio website" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-1">Brand Portfolio</h3>
+                    <p class="text-gray-600 text-sm">Clean, modern case study layout with motion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-light animate-fade-in">About Me</h2>
+                <div class="w-24 h-1 bg-blue-primary mx-auto animate-slide-up"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-slide-left">
+                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-blue-primary to-blue-light rounded-full flex items-center justify-center animate-float">
+                            <div class="w-72 h-72 bg-gray-700 rounded-full flex items-center justify-center">
+                                <span class="text-6xl font-bold text-blue-light">AO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-slide-right">
+                        <h3 class="text-3xl font-bold mb-6 text-blue-light">Hello, I'm Aj!</h3>
+                        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                            I'm a passionate 3rd year BSIT student with a strong foundation in full-stack development. 
+                            My journey in technology has led me to explore various frameworks and languages, 
+                            always eager to learn and build innovative solutions.
+                        </p>
+                        <p class="text-lg mb-8 text-gray-300 leading-relaxed">
+                            Currently pursuing my Bachelor's degree in Information Technology, I'm focused on 
+                            mastering modern web development technologies and creating meaningful digital experiences.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-blue-primary px-4 py-2 rounded-full text-sm font-semibold">
+                                Full-Stack Developer
+                            </div>
+                            <div class="bg-blue-primary px-4 py-2 rounded-full text-sm font-semibold">
+                                BSIT Student
+                            </div>
+                            <div class="bg-blue-primary px-4 py-2 rounded-full text-sm font-semibold">
+                                Tech Enthusiast
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-light animate-fade-in">Skills & Technologies</h2>
+                <div class="w-24 h-1 bg-blue-primary mx-auto animate-slide-up"></div>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Laravel -->
+                    <div class="glass-effect p-8 rounded-2xl text-center hover-scale animate-slide-up" style="animation-delay: 0.1s;">
+                        <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 10.935v2.131l-8 3.947v-2.23l5.64-2.783-5.64-2.79v-2.223l8 3.948zm-16 3.861l5.64-2.787-5.64-2.79v2.223l8 3.948v2.131l-8-3.947v2.23zm7.64-12.433l-5.64 2.787 5.64 2.79V5.023L8 1.075v-2.131l8 3.947v2.223z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">Laravel</h3>
+                        <p class="text-gray-300 text-sm">PHP Framework for web applications</p>
+                    </div>
+
+                    <!-- PHP -->
+                    <div class="glass-effect p-8 rounded-2xl text-center hover-scale animate-slide-up" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.5 18.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zm7.5-6.5c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">PHP</h3>
+                        <p class="text-gray-300 text-sm">Server-side scripting language</p>
+                    </div>
+
+                    <!-- Tailwind CSS -->
+                    <div class="glass-effect p-8 rounded-2xl text-center hover-scale animate-slide-up" style="animation-delay: 0.3s;">
+                        <div class="w-16 h-16 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">Tailwind CSS</h3>
+                        <p class="text-gray-300 text-sm">Utility-first CSS framework</p>
+                    </div>
+
+                    <!-- Django -->
+                    <div class="glass-effect p-8 rounded-2xl text-center hover-scale animate-slide-up" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.5 18.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zm7.5-6.5c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">Django</h3>
+                        <p class="text-gray-300 text-sm">Python web framework</p>
+                    </div>
+                </div>
+
+                <!-- Additional Skills -->
+                <div class="mt-16 text-center">
+                    <h3 class="text-2xl font-bold mb-8 text-blue-light">Additional Skills</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            HTML5
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            CSS3
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            JavaScript
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            Python
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            MySQL
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            Git
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            Responsive Design
+                        </div>
+                        <div class="bg-blue-primary px-6 py-3 rounded-full text-sm font-semibold hover-scale">
+                            API Development
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Progress Bars -->
+                <div class="mt-16 grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex justify-between mb-2"><span class="text-gray-300">Laravel</span><span class="text-blue-200">85%</span></div>
+                        <div class="w-full h-3 bg-gray-800 rounded-full overflow-hidden"><div class="h-3 bg-blue-secondary w-0 skill-bar" data-progress="85"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2"><span class="text-gray-300">PHP</span><span class="text-blue-200">80%</span></div>
+                        <div class="w-full h-3 bg-gray-800 rounded-full overflow-hidden"><div class="h-3 bg-blue-secondary w-0 skill-bar" data-progress="80"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2"><span class="text-gray-300">Tailwind CSS</span><span class="text-blue-200">90%</span></div>
+                        <div class="w-full h-3 bg-gray-800 rounded-full overflow-hidden"><div class="h-3 bg-blue-secondary w-0 skill-bar" data-progress="90"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2"><span class="text-gray-300">Django</span><span class="text-blue-200">75%</span></div>
+                        <div class="w-full h-3 bg-gray-800 rounded-full overflow-hidden"><div class="h-3 bg-blue-secondary w-0 skill-bar" data-progress="75"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-light animate-fade-in">Featured Projects</h2>
+                <div class="w-24 h-1 bg-blue-primary mx-auto animate-slide-up"></div>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass-effect p-6 rounded-2xl hover-scale animate-slide-up tilt-card" style="animation-delay: 0.1s;">
+                        <div class="w-full h-48 rounded-lg mb-4 overflow-hidden">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=384&fit=crop&crop=center" 
+                             srcset="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=384&fit=crop&crop=center 640w,
+                                     https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1024&h=614&fit=crop&crop=center 1024w,
+                                     https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=960&fit=crop&crop=center 1600w" 
+                                 alt="E-commerce platform" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">E-Commerce Platform</h3>
+                        <p class="text-gray-300 text-sm mb-4">A full-stack e-commerce solution built with Laravel and Tailwind CSS</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">Laravel</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">PHP</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">Tailwind</span>
+                        </div>
+                        <a href="#" class="text-blue-light hover:text-blue-secondary transition-colors duration-300 text-sm font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-effect p-6 rounded-2xl hover-scale animate-slide-up tilt-card" style="animation-delay: 0.2s;">
+                        <div class="w-full h-48 rounded-lg mb-4 overflow-hidden">
+                            <img loading="lazy" src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=640&h=384&fit=crop&crop=center" 
+                                 srcset="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=640&h=384&fit=crop&crop=center 640w,
+                                         https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1024&h=614&fit=crop&crop=center 1024w,
+                                         https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=960&fit=crop&crop=center 1600w" 
+                                 alt="Task management app" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">Task Management App</h3>
+                        <p class="text-gray-300 text-sm mb-4">A collaborative task management application using Django and modern UI</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">HTML/CSS</span>
+                        </div>
+                        <a href="#" class="text-blue-light hover:text-blue-secondary transition-colors duration-300 text-sm font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-effect p-6 rounded-2xl hover-scale animate-slide-up tilt-card" style="animation-delay: 0.3s;">
+                        <div class="w-full h-48 rounded-lg mb-4 overflow-hidden">
+                            <img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=384&fit=crop&crop=center" 
+                                 srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=384&fit=crop&crop=center 640w,
+                                         https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=614&fit=crop&crop=center 1024w,
+                                         https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=960&fit=crop&crop=center 1600w" 
+                                 alt="Portfolio website" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-blue-light">Portfolio Website</h3>
+                        <p class="text-gray-300 text-sm mb-4">A responsive portfolio website with modern animations and design</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">HTML</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">Tailwind</span>
+                            <span class="bg-blue-primary px-3 py-1 rounded-full text-xs">JavaScript</span>
+                        </div>
+                        <a href="#" class="text-blue-light hover:text-blue-secondary transition-colors duration-300 text-sm font-semibold">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-light animate-fade-in">Get In Touch</h2>
+                <div class="w-24 h-1 bg-blue-primary mx-auto animate-slide-up"></div>
+                <p class="text-xl text-gray-300 mt-6 animate-slide-up" style="animation-delay: 0.2s;">
+                    Let's work together to bring your ideas to life
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="animate-slide-left">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-light">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-primary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300">Email</p>
+                                    <p class="text-blue-light font-semibold">aj.obalobao09@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-primary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300">Location</p>
+                                    <p class="text-blue-light font-semibold">Philippines</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-primary rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300">Status</p>
+                                    <p class="text-blue-light font-semibold">Available for projects</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-slide-right">
+                        <form class="space-y-6" action="https://formsubmit.co/aj.obalobao09@gmail.com" method="POST">
+                            <input type="hidden" name="_next" value="https://thank-you.page/">
+                            <input type="hidden" name="_captcha" value="false">
+                            <div>
+                                <label class="block text-gray-300 mb-2">Name</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-primary focus:outline-none transition-colors duration-300" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-primary focus:outline-none transition-colors duration-300" placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Message</label>
+                                <textarea rows="4" name="message" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-primary focus:outline-none transition-colors duration-300" placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-primary hover:bg-blue-dark text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover-scale">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Accordion (Light) -->
+    <section id="services" class="py-24 bg-gray-100 text-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="mb-10">
+                <p class="uppercase tracking-widest text-xs text-gray-500 mb-3">Service</p>
+                <h2 class="font-serifBrand text-4xl md:text-5xl font-extrabold">Unleashing Your Brand's Potential</h2>
+            </div>
+            <div class="divide-y divide-gray-200 border border-gray-200 rounded-2xl bg-white overflow-hidden">
+                <div class="accordion-row">
+                    <button class="w-full flex items-center justify-between p-5 text-left">
+                        <div class="flex items-center gap-5">
+                            <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-semibold">01</span>
+                            <span class="text-lg font-semibold">Design System</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-600 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.188l3.71-3.958a.75.75 0 011.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0l-4.25-4.53a.75.75 0 01.02-1.06z"/></svg>
+                    </button>
+                    <div class="accordion-content hidden px-5 pb-5 text-gray-600">Design tokens, components, and responsive rules for consistent UX.</div>
+                </div>
+                <div class="accordion-row">
+                    <button class="w-full flex items-center justify-between p-5 text-left">
+                        <div class="flex items-center gap-5">
+                            <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-semibold">02</span>
+                            <span class="text-lg font-semibold">Graphic Design</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-600 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.188l3.71-3.958a.75.75 0 011.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0l-4.25-4.53a.75.75 0 01.02-1.06z"/></svg>
+                    </button>
+                    <div class="accordion-content hidden px-5 pb-5 text-gray-600">Brand assets and visuals that communicate clearly and memorably.</div>
+                </div>
+                <div class="accordion-row">
+                    <button class="w-full flex items-center justify-between p-5 text-left">
+                        <div class="flex items-center gap-5">
+                            <span class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-sm font-semibold">03</span>
+                            <span class="text-lg font-semibold">Development</span>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-600 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.188l3.71-3.958a.75.75 0 011.08 1.04l-4.25 4.53a.75.75 0 01-1.08 0l-4.25-4.53a.75.75 0 01.02-1.06z"/></svg>
+                    </button>
+                    <div class="accordion-content hidden px-5 pb-5 text-gray-600">Full‑stack solutions using Laravel, PHP, Tailwind, and Django.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-gray-400 hover:text-blue-light transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-light transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-light transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.46c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/obalobaoaj" target="_blank" rel="noopener" aria-label="GitHub" class="text-gray-400 hover:text-blue-light transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-400">&copy; 2024 Aj Obalobao. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back To Top Button -->
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 hidden bg-blue-primary hover:bg-blue-dark text-white p-3 rounded-full shadow-lg transition-all duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Keep navbar gradient, add subtle shadow on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-slide-right, .animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Accordion toggles
+        document.querySelectorAll('#services .accordion-row').forEach(row => {
+            const btn = row.querySelector('button');
+            const content = row.querySelector('.accordion-content');
+            const icon = btn.querySelector('svg');
+            btn.addEventListener('click', () => {
+                const isHidden = content.classList.contains('hidden');
+                // close others
+                document.querySelectorAll('#services .accordion-content').forEach(c => c.classList.add('hidden'));
+                document.querySelectorAll('#services .accordion-row svg').forEach(s => s.style.transform = 'rotate(0deg)');
+                // open current
+                if (isHidden) {
+                    content.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Typing effect in hero
+        const typedEl = document.getElementById('typed');
+        const phrases = [
+            'Building with Laravel & PHP',
+            'Styling with Tailwind CSS',
+            'Developing with Django',
+            'Creating Modern Web Apps'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+        function typeLoop() {
+            const current = phrases[phraseIndex];
+            if (!deleting) {
+                typedEl.textContent = current.slice(0, charIndex++);
+                if (charIndex > current.length) {
+                    deleting = true;
+                    setTimeout(typeLoop, 1200);
+                    return;
+                }
+            } else {
+                typedEl.textContent = current.slice(0, charIndex--);
+                if (charIndex === 0) {
+                    deleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+            setTimeout(typeLoop, deleting ? 40 : 90);
+        }
+        if (typedEl) typeLoop();
+
+        // Scrollspy for nav links
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"], #mobileMenu a[href^="#"]');
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const linkMatch = (link) => link.getAttribute('href') === `#${id}`;
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('text-blue-light', linkMatch(link));
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+        sections.forEach(sec => spy.observe(sec));
+
+        // Animate skill bars on enter
+        const skillBars = document.querySelectorAll('.skill-bar');
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const progress = el.getAttribute('data-progress');
+                    el.style.width = progress + '%';
+                    el.style.transition = 'width 1.2s ease-out';
+                    barObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.3 });
+        skillBars.forEach(b => barObserver.observe(b));
+
+        // Tilt effect for project cards
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            const height = 12; // deg
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotY = ((x / rect.width) - 0.5) * 2 * height;
+                const rotX = ((y / rect.height) - 0.5) * -2 * height;
+                card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+                card.style.transition = 'transform .2s ease-out';
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+        backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Swirling fish animation (canvas)
+        const canvas = document.getElementById('fishCanvas');
+        const ctx = canvas?.getContext('2d');
+        let fish = [];
+        let running = true;
+        function resizeCanvas() {
+            if (!canvas) return;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+        function createFish(count = 18) {
+            fish = Array.from({ length: count }).map((_, i) => ({
+                angle: Math.random() * Math.PI * 2,
+                radius: 40 + Math.random() * 260,
+                speed: 0.003 + Math.random() * 0.004,
+                size: 2 + Math.random() * 3,
+                hue: 200 + Math.floor(Math.random() * 40),
+                orbit: 60 + Math.random() * 120,
+                phase: Math.random() * Math.PI * 2
+            }));
+        }
+        function drawFish(x, y, angle, size, color) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, size * 2.2, size, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(-size * 2.2, 0);
+            ctx.lineTo(-size * 3.2, size * 0.9);
+            ctx.lineTo(-size * 3.2, -size * 0.9);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+        function animateFish() {
+            if (!canvas || !ctx || !running) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            fish.forEach(f => {
+                f.angle += f.speed;
+                const swirl = f.orbit * Math.sin(f.angle + f.phase);
+                const x = cx + Math.cos(f.angle) * (f.radius + swirl * 0.15);
+                const y = cy + Math.sin(f.angle) * (f.radius + swirl * 0.15);
+                const col = `hsla(${f.hue}, 85%, 65%, 0.6)`;
+                drawFish(x, y, f.angle, f.size, col);
+            });
+            requestAnimationFrame(animateFish);
+        }
+        // Initialize when hero is visible
+        const hero = document.getElementById('home');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                running = entry.isIntersecting;
+                if (running) {
+                    resizeCanvas();
+                    if (fish.length === 0) createFish();
+                    requestAnimationFrame(animateFish);
+                }
+            });
+        }, { threshold: 0.1 });
+        if (hero) heroObserver.observe(hero);
+        window.addEventListener('resize', resizeCanvas);
+
+        // Disable canvas animation for reduced motion users
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            running = false;
+        }
+    </script>
+</body>
+</html>
